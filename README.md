@@ -1,2 +1,2 @@
 # X86_Test
-X86 Stuff
+X86 Test for Linux. Will hopefully get this setup for microcontroller at some point...
