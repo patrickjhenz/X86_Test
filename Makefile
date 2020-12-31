@@ -1,8 +1,11 @@
-all: test.o test_func.o
-	ld -m elf_i386 -s -o test test.o test_func.o
+blinky.bin: blinky
+	dd if=blinky of=blinky.bin skip=8
 
-test.o: test.nasm
-	nasm -f elf test.nasm
+blinky: blinky.o int_handler.o 
+	ld -m elf_i386 -o blinky blinky.o int_handler.o
 
-test_func.o: test_func.nasm
-	nasm -f elf test_func.nasm
+blinky.o: blinky.nasm
+	nasm -f elf -g blinky.nasm
+
+int_handler.o: int_handler.nasm
+	nasm -f elf -g int_handler.nasm
